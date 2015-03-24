@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title>Drone control</title>
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
+    <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" language="Javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js">
+    </script>
+</head>
+<body>
+
+
+<div class="synth">
+    <h1>DRONE COMMANDER</h1>
+
+    <ul>
+        <li>osc1<input id="controlosc1" type="range" min="20" max="400" value="80"/></li>
+        <li>mix<input id="controlmix" type="range" min="0" max="100" value="50"/></li>
+        <li>osc2<input id="controlosc2" type="range" min="20" max="400" value="80"/></li>
+        <li>lfo<input id="controllfo" type="range" min="0" max="20" value="2"/></li>
+        <li>shape<input id="controlshape" type="range" min="2" max="16" value="2"/></li>
+        <li>pulse<input id="controlpulse" type="range" min="0" max="100" value="50"/></li>
+        <li>filter<input id="controlfilter" type="range" min="20" max="360" value="2"/></li>
+        <li>2-4-8-16<input id="control2-4-8-16" type="range" min="2" max="16" value="80" list="powers"/>
+            <datalist id="powers">
+                <option value="2">
+                <option value="4">
+                <option value="8">
+                <option value="16">
+            </datalist>
+        </li>
+        <li>vol<input id="vol" type="range" min="0" max="100" value="50"/></li>
+    </ul>
+    <input type="text" value="75" class="dial">
+
+    <script>
+        $(function() {
+            $(".dial").knob();
+        });
+    </script>
+</div>
+
+
+<script src="js/dronecommander.js"></script>
+    <script src="js/jquery.knob.min.js"></script>
+
+
+</body>
+</html>

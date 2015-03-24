@@ -1,0 +1,17 @@
+body {
+    font-family: 'Audiowide', cursive;
+}
+
+.synth {
+
+    position: relative;
+    width: 15em;
+    height: 24em;
+    padding: 1em;
+    background-color: mediumseagreen;
+    border-left: 1em solid lightseagreen;
+    border-right: 1em solid lightseagreen;
+    border-top: 1em solid darkseagreen;
+    border-bottom: 1em solid darkseagreen;
+
+}
