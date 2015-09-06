@@ -1,44 +1,151 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-<head lang="en">
+  <head lang="en">
     <meta charset="UTF-8">
 
     <title>Drone control</title>
     <link rel='stylesheet' type='text/css' href='css/style.css'>
     <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" language="Javascript"
-            src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js">
+
+ <script type="text/javascript" src="js/drone-control.js">
     </script>
-</head>
-<body>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
+    </script>
+    <script type="text/javascript" src="js/knobs.js">
+    </script>
 
 
-<div class="synth">
-    <h1>DRONE COMMANDER</h1>
+    <script>
+      $(function($) {
+      $(".knobosc").knob({
+      'width': 150,
+      'min': 20,
+      'max': 440,
+      'thickness': .3,
+      'fgColor':"#000",
+      'step': .1,
+      change : function (value) {
+      osc1.frequency.value = value;
+      console.log(value);
 
-    <ul>
-        <li>osc1<input id="controlosc1" type="number" min="20" max="400" value="80"/></li>
-        <li>mix<input id="controlmix" type="range" min="0" max="100" value="50"/></li>
-        <li>osc2<input id="controlosc2" type="number" min="20" max="400" value="80"/></li>
-        <li>pulse<input id="controlpulse" type="range" min="0" max="100" value="50"/></li>
-        <li>filter<input id="controlfilter" type="range" min="20" max="360" value="2"/></li>
-        <li>2-4-8-16<input id="control2-4-8-16" type="range" min="2" max="16" value="80" list="powers"/>
-            <datalist id="powers">
-                <option value="2">
-                <option value="4">
-                <option value="8">
-                <option value="16">
-            </datalist>
-        </li>
-        <li>vol<input id="vol" type="range" min="0" max="100" value="50"/></li>
-    </ul>
+      }
+      });
 
-</div>
+   $(".knobmix").knob({
+      'width': 150,
+      'min': 0,
+      'max': 100,
+      'thickness': .3,
+      'fgColor':"#000",
+      'step': .1,
+      change : function (value) {
+
+      }
+      });
+
+         $(".knobmix").knob({
+      'width': 150,
+      'min': 0,
+      'max': 100,
+      'thickness': .3,
+      'fgColor':"#000",
+      'step': .1,
+      change : function (value) {
+
+      }
+      });
 
 
-<script src="js/dronecommander.js"></script>
+
+
+         $(".knobpulse").knob({
+      'width': 150,
+      'min': 0,
+      'max': 100,
+      'thickness': .3,
+      'fgColor':"#000",
+      'step': .1,
+      change : function (value) {
+
+      }
+      });
 
 
 
-</body>
+
+
+
+
+
+      });
+    </script>
+
+  </head>
+  <body>
+
+
+    <div class="synth">
+      <h1>DRONE COMMANDER</h1>
+
+
+
+
+
+        osc1
+
+          <canvas width="50px" height="50px"></canvas>
+          <input id="controlosc1" class="knobosc"  min="20" max="400" value="73.4"/>
+
+
+
+        mix
+
+          <input id="controlmix" class="knobmix" type="range" min="0" max="100" value="50"/>
+
+
+
+
+        osc2
+          <canvas width="50px" height="50px"></canvas>
+          <input id="controlosc2" class="knobosc"  min="20" max="400" value="73.2"/>
+
+
+
+        pulse
+          <canvas width="50px" height="50px"></canvas>
+          <input id="controlpulse" class="knobpulse" min="0" max="100" value="50"/>
+
+
+
+        filter
+          <input id="controlfilter" type="range" min="20" max="360" value="2"/>
+
+
+
+
+        2-4-8-16
+
+
+          <input id="control2-4-8-16" type="range" min="2" max="16" value="80" list="powers"/>
+          <datalist id="powers">
+            <option value="2">
+            <option value="4">
+            <option value="8">
+            <option value="16">
+          </datalist>
+
+        vol<input id="vol" type="range" min="0" max="100" value="50"/>
+
+ <canvas id="drone-control"><canvas>
+
+
+    </div>
+
+
+    <script src="js/dronecommander.js"></script>
+
+
+
+  </body>
 </html>
