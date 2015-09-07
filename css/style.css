@@ -18,3 +18,11 @@ body {
 li {
     display: inline-block;
 }
+
+.drone-control-canvas {
+    border-top: solid black 1px;
+    border-left: solid black 1px;
+    border-bottom: solid #aaa 1px;
+    border-right: solid #aaa 1px;
+
+}
