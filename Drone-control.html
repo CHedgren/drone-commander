@@ -20,7 +20,7 @@
       $(function($) {
       $(".knobosc").knob({
       'width': 150,
-      'min': 20,
+      'min': 0,
       'max': 440,
       'thickness': .3,
       'fgColor':"#000",
@@ -95,20 +95,20 @@
         osc1
 
           <canvas width="50px" height="50px"></canvas>
-          <input id="controlosc1" class="knobosc"  min="20" max="400" value="73.4"/>
+          <input id="controlosc1" class="knobosc"  min="0" max="400" value="73.4"/>
 
 
 
         mix
 
-          <input id="controlmix" class="knobmix" type="range" min="0" max="100" value="50"/>
+          <input id="controlmix" class="knobmix"  min="0" max="100" value="50"/>
 
 
 
 
         osc2
           <canvas width="50px" height="50px"></canvas>
-          <input id="controlosc2" class="knobosc"  min="20" max="400" value="73.2"/>
+          <input id="controlosc2" class="knobosc"  min="0" max="400" value="73.2"/>
 
 
 
@@ -119,7 +119,7 @@
 
 
         filter
-          <input id="controlfilter" type="range" min="20" max="360" value="2"/>
+          <input id="controlfilter" type="range" min="0" max="360" value="2"/>
 
 
 
@@ -133,7 +133,7 @@
             <option value="4">
             <option value="8">
             <option value="16">
-          </datalist>
+          </Datalist>
 
         vol<input id="vol" type="range" min="0" max="100" value="50"/>
 
