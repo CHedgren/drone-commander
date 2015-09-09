@@ -35,7 +35,7 @@
       }
       });
 
-      $(".knobmix").knob({
+      $(".knobosc2").knob({
       'width':  100,
       'height': 100,
       'min': 0,
@@ -44,6 +44,7 @@
       'fgColor':"#000",
       'step': .1,
       change : function (value) {
+      osc2.frequency.value = value;
 
       }
       });
@@ -57,6 +58,7 @@
       'fgColor':"#000",
       'step': .1,
       change : function (value) {
+       crossfade(value);
 
       }
       });
@@ -73,7 +75,8 @@
       'fgColor':"#000",
       'step': .1,
       change : function (value) {
-
+      lfo2gain.gain.value = value;
+      console.log(value);
       }
       });
 
@@ -86,6 +89,8 @@
       'fgColor':"#000",
       'step': .1,
       change : function (value) {
+      filter.frequency.value = value;
+       peakfilter.frequency.value = value;
 
       }
       });
@@ -100,7 +105,7 @@
       'fgColor':"#000",
       'step': .1,
       change : function (value) {
-
+      outamp.gain.value = value/100;
       }
       });
 
@@ -113,7 +118,7 @@
       'fgColor':"#000",
       'step': .1,
       change : function (value) {
-
+      lfo2.frequency.value = lfo1.frequency.value*value;
       }
       });
 
