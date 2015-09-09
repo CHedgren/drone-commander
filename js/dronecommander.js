@@ -118,8 +118,8 @@ osc2.addEventListener("input", slide);
 volknob.addEventListener("input", slide);
 filterknob.addEventListener("input", slide);
 
-function crossfade(element) {
-    var x = parseInt(element.value) / parseInt(element.max);
+function crossfade(val) {
+    var x = parseInt(val) / 100);
     // Use an equal-power crossfading curve:
     var gain1 = Math.cos(x * 0.5*Math.PI);
     var gain2 = Math.cos((1.0 - x) * 0.5*Math.PI);
@@ -140,7 +140,7 @@ function slide() {
     }
 
     else if (this.getAttribute("id") == 'controlmix') {
-        crossfade(this);
+        crossfade(val);
 
     }
 
