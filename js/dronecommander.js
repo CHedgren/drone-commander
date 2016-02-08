@@ -1,8 +1,5 @@
 var context = new AudioContext();
 
-
-
-
 var analyser = context.createAnalyser();
 
 var osc1 = context.createOscillator();
@@ -107,17 +104,6 @@ outamp.gain.value = volknob.value/100;
 
 
 
-
-osc1knob.addEventListener("input", slide);
-mixknob.addEventListener("input", slide);
-osc2knob.addEventListener("input", slide);
-pulseknob.addEventListener("input", slide);
-numbersknob.addEventListener("input", slide);
-osc2.addEventListener("input", slide);
-osc2.addEventListener("input", slide);
-volknob.addEventListener("input", slide);
-filterknob.addEventListener("input", slide);
-
 function crossfade(val) {
     var x = parseInt(val) / 100;
     // Use an equal-power crossfading curve:
@@ -127,72 +113,6 @@ function crossfade(val) {
     xfade2.gain.value = gain2;
     console.log(gain1 + "    " + gain2);
 };
-
-
-function slide() {
-    // console.log(this);
-    // console.log(this.getAttribute("id"));
-    console.log(this.getAttribute("id"));
-    if (this.getAttribute("id") == 'controlosc1') {
-
-        osc1.frequency.value = this.value;
-        console.log("osc1: ", osc1.frequency.value);
-    }
-
-    else if (this.getAttribute("id") == 'controlmix') {
-        crossfade(val);
-
-    }
-
-    else if (this.getAttribute("id") == 'controlosc2') {
-        osc2.frequency.value = this.value;
-    }
-
-    else if (this.getAttribute("id") == 'controllfo') {
-        lfo1.frequency.value = this.value;
-        console.log(lfo1.frequency.value);
-    }
-
-    else if (this.getAttribute("id") == 'controlshape') {
-
-    }
-
-    else if (this.getAttribute("id") == 'controlpulse') {
-        lfo2gain.gain.value = this.value/100;
-        console.log(lfo2gain.gain.value);
-    }
-
-    else if (this.getAttribute("id") == 'controlfilter') {
-        console.log("filter");
-        filter.frequency.value = this.value;
-        peakfilter.frequency.value = this.value;
-    }
-
-    else if (this.getAttribute("id") == 'control2-4-8-16') {
-        lfo2.frequency.value = lfo1.frequency.value*this.value;
-        console.log(lfo2.frequency.value +"  " +this.value+ " ");
-    }
-    else if (this.getAttribute("id") == 'vol') {
-
-
-        outamp.gain.value = this.value/100;
-        console.log(outamp.gain.value);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -224,8 +144,7 @@ analyser.getByteTimeDomainData(dataArray);
 analyser.maxDecibels =500;
 
 
-
-// draw an oscilloscope of the current audio source
+// 
 var canvas = document.getElementById('drone-control');
 var canvasCtx = canvas.getContext('2d');
 

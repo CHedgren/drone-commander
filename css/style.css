@@ -8,9 +8,9 @@
 }
 
 body {
-    background:#444;
-    overflow:hidden;
-    text-align:center;
+    background: #444;
+    overflow: hidden;
+    text-align: center;
     font-family: 'Audiowide', cursive;
 
 }
@@ -25,4 +25,9 @@ li {
     border-bottom: solid #aaa 1px;
     border-right: solid #aaa 1px;
 
+}
+
+
+.drone-control-canvas {
+    width: 50%;
 }
