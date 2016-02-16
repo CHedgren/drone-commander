@@ -144,43 +144,69 @@ analyser.getByteTimeDomainData(dataArray);
 analyser.maxDecibels =500;
 
 
-// 
+//
+
+var FCanvas = document.getElementsByClassName('controller1')[0];
+
+var touches = [];
+var ctrlctx = FCanvas.getContext('2d');
+FCanvas.addEventListener('touchmove', function(event) {
+
+   draw(event.touches);
+}, false);
+
+
+
+document.body.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+}, false);
+
 var canvas = document.getElementById('drone-control');
 var canvasCtx = canvas.getContext('2d');
 
-function draw() {
+ctrlctx.save();
+function draw(touches) {
 
-    drawVisual = requestAnimationFrame(draw);
 
-    analyser.getByteTimeDomainData(dataArray);
+    for (var i = 0; i < touches.length; i++) {
+        var touch = touches[i];
+        ctrlctx.beginPath();
+        ctrlctx.arc(Math.round( touch.screenX * (FCanvas.width / FCanvas.offsetWidth) )
+    , Math.round( touch.screenY * (FCanvas.height / FCanvas.offsetHeight)) , 5, 0, 2 * Math.PI, true);
+        ctrlctx.fill();
+        ctrlctx.stroke();
+        drawVisual = requestAnimationFrame(draw);
 
-    canvasCtx.fillStyle = 'rgb(200, 200, 200)';
-    canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+        analyser.getByteTimeDomainData(dataArray);
 
-    canvasCtx.lineWidth = 2;
-    canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+        canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+        canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
 
-    canvasCtx.beginPath();
+        canvasCtx.lineWidth = 2;
+        canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
 
-    var sliceWidth = canvas.width * 1.0 / (bufferLength);
-    var x = 0;
+        canvasCtx.beginPath();
 
-    for(var i = 0; i < bufferLength; i++) {
+        var sliceWidth = canvas.width * 1.0 / (bufferLength);
+        var x = 0;
 
-        var v = dataArray[i] / (128.0);
-        var y = v * canvas.height/2 ;
+        for (var i = 0; i < bufferLength; i++) {
 
-        if(i === 0) {
-            canvasCtx.moveTo(x, y);
-        } else {
-            canvasCtx.lineTo(x, y);
+            var v = dataArray[i] / (128.0);
+            var y = v * canvas.height / 2;
+
+            if (i === 0) {
+                canvasCtx.moveTo(x, y);
+            } else {
+                canvasCtx.lineTo(x, y);
+            }
+
+            x += sliceWidth;
         }
 
-        x += sliceWidth;
+        canvasCtx.lineTo(canvas.width, canvas.height / 2);
+        canvasCtx.stroke();
     }
-
-    canvasCtx.lineTo(canvas.width, canvas.height/2);
-    canvasCtx.stroke();
 };
 
-draw();
+draw(touches);
